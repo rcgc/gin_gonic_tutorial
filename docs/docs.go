@@ -25,7 +25,7 @@ const docTemplate = `{
     "paths": {
         "/albums": {
             "get": {
-                "description": "get albums",
+                "description": "gets all albums in the database",
                 "consumes": [
                     "application/json"
                 ],
@@ -44,6 +44,44 @@ const docTemplate = `{
                             "items": {
                                 "$ref": "#/definitions/main.Album"
                             }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Updates an existing album in the database corresponding to the id sent. Otherwise, returns error",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "album"
+                ],
+                "summary": "Update an album",
+                "parameters": [
+                    {
+                        "description": "Album JSON Object",
+                        "name": "album",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/main.Album"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.Album"
+                        }
+                    },
+                    "404": {
+                        "description": "NotFound",
+                        "schema": {
+                            "type": "string"
                         }
                     }
                 }
@@ -88,7 +126,7 @@ const docTemplate = `{
         },
         "/albums/{id}": {
             "get": {
-                "description": "Get a single album from the database corresponding to the id in the path. Otherwise, returns error",
+                "description": "Gets a single album from the database corresponding to the id in the path. Otherwise, returns error",
                 "consumes": [
                     "application/json"
                 ],
