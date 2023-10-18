@@ -9,6 +9,7 @@ An installation of Go 1.16 or later.
 
 GET – Get a list of all albums, returned as JSON.<br>
 POST – Add a new album from request data sent as JSON.<br><br>
+PUT - Updates an existing album by its ID from request data sent as JSON.<br><br>
 
 /albums/:id<br>
 
